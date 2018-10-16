@@ -5,11 +5,17 @@
 
   "description": "嘗試將鍵盤上的按鍵對應到網頁上的動作",
 
+  "author": "Wei-Yu Chen",
+
   "content_scripts": [
     {
       "matches": ["https://reader.readmoo.com/reader/index.html"],
       "all_frames": true,
       "js": ["readmoo.js"]
+    },
+    {
+      "matches": ["https://www.youtube.com/watch*"],
+      "js": ["youtube.js"]
     }
   ]
 

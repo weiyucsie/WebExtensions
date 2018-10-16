@@ -31,8 +31,8 @@ document.addEventListener('keyup', function (evt) {
         }
     }
 
-    if (KeyMappings[evt.code]) {
-        var target = KeyMappings[evt.code];
-        tryClick(KeyMappings[evt.code]);
+    var target = KeyMappings[evt.key];
+    if (target) {
+        tryClick(target);
     }
 }, false);
