@@ -1,10 +1,5 @@
-document.addEventListener('keyup', function (evt) {
-    var KeyMappings = {
-        'MediaStop': 'span.shrink-cancel',
-        'MediaPlayPause': ['span.shrink-play', 'span.shrink-pause']
-    };
-
-    var tryClick = function (selector) {
+KeyToClick = {
+    Click: function (selector) {
         switch (typeof (selector)) {
             case 'string':
                 var el = document.querySelector(selector);
@@ -17,7 +12,7 @@ document.addEventListener('keyup', function (evt) {
                 break;
             case 'object':
                 if (Array.isArray(selector)) {
-                    selector.some(tryClick);
+                    selector.some(arguments.callee);
                 } else {
                     console.log('非陣列物件 Selector');
                 }
@@ -29,10 +24,21 @@ document.addEventListener('keyup', function (evt) {
                 console.log('未知類型 Selector');
             break;
         }
+    },
+    DoMapping: function(key, KeyMappings) {
+        //console.log(location.href + ' Key: ' + key);
+
+        var target = KeyMappings[key];
+        if (target) {
+            KeyToClick.Click(target);
+        }
+    }
+}
+
+function SetKeyboardBinding(KeyMappings) {
+    function DoAction(evt) {
+        KeyToClick.DoMapping(evt.key, KeyMappings);
     }
 
-    var target = KeyMappings[evt.key];
-    if (target) {
-        tryClick(target);
-    }
-}, false);
+    document.addEventListener('keyup', DoAction, true);
+}

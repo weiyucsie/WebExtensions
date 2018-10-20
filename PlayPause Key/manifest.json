@@ -11,11 +11,17 @@
     {
       "matches": ["https://reader.readmoo.com/reader/index.html"],
       "all_frames": true,
-      "js": ["readmoo.js"]
+      "js": [
+        "js/lib/lib.js",
+        "js/sites/readmoo-reader.js"
+      ]
     },
     {
       "matches": ["https://www.youtube.com/watch*"],
-      "js": ["youtube.js"]
+      "js": [
+        "js/lib/lib.js",
+        "js/sites/youtube.js"
+      ]
     }
   ]
 
